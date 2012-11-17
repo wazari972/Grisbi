@@ -1,0 +1,22 @@
+How to install Grisbi : 
+=======================
+
+Requirements:
+
+ - GTK 2.2, 2.10 is needed to be able to print
+ - libofx (optional)
+
+Installation steps:
+
+ - ./configure --prefix=/path/to/install/grisbi
+ - make
+ - make install
+
+Grisbi will now be installed.  Just run <prefix>/bin/grisbi and have
+fun !
+
+OFX support is optional and can be disabled by using the --without-ofx
+parameter.
+
+
+ -- Grisbi development team <team@grisbi.org>

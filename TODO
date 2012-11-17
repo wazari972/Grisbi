@@ -1,0 +1,35 @@
+To Do List
+=================================
+
+Version ultérieure
+=======================================================================================
+
+ - pouvoir échoir des opérations planifiées dans les rapprochements:
+   
+
+
+ - Modifier le message de débogguage du fichier de compte:
+   supprimer la cause due aux nombreux virements
+
+Version future
+=======================================================================================
+
+ - Revoir les soldes partiels pour les comptes multi devises:
+   Problème de solde de comptes multidevises. Intégrer le rapport entre devises pour faire le calcul en devise principale.
+
+
+ - Ré-écrire le formulaire:
+   Reprendre les fonctionalités du formulaire et le réécrire en totalité.
+
+
+ - format du fichier de tips à modifier:
+   Modifier le format du fichier tips pour s'affranchir du problème de retours de ligne.
+
+
+ - remplacer la fonction realpath:
+   dans la fonction gsb_file_append_name_to_opened_list ( gchar * path_fichier ) supprimer l'appel à realpath.
+
+
+ - ajouter l'utilisation de la touche supp dans la gestion devises:
+   
+

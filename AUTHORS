@@ -1,0 +1,67 @@
+Main Grisbi authors:
+====================
+
+Programming:
+  Alain Portal (dionysos@grisbi.org)
+  Benjamin Drieu (bdrieu@april.org)
+  Cédric Auger (cedric@grisbi.org)
+  François Terrot (francois.terrot@grisbi.org)
+  Pierre Biava (grisbi@pierre.biava.name)
+  Mickaël Remars (grisbi@remars.com)
+
+Graphics:
+  André Pascual (andre@linuxgraphic.org)
+  Jakub 'jimmac' Steiner (jimmac[at]ximian.com)
+  Jean-Baptiste Renard (renardjb[at]free.fr)
+  Tuomas 'tigert' Kuosmanen (tigert[at]gimp.org)
+
+Documentation:
+  Alain Portal (dionysos[at]grisbi.org)
+  Benjamin Drieu (bdrieu[at]april.org)
+  Daniel Cartron (doc[at]grisbi.org)
+  Loic Breilloux (loic.breilloux[at]libertysurf.fr)
+
+Translation:
+  Achilleas Kaskamanidis (achilk55[at]gmail.com) (Greek)
+  Alain Portal (dionysos[at]grisbi.org) (English)
+  Benjamin Drieu (bdrieu[at]april.org) (English)
+  Carlos M. Camara (carcam_moceu[at]yahoo.es) (Spanish)
+  Daniel Cartron (doc[at]grisbi.org) (English)
+  Dmitri Popov (dmpop[at]openoffice.org) (Danish)
+  Dotan Mazor (grisbi[at]dotanmazor.com) (Hebrew)
+  Edwin Huijsing (e.huijsing[at]fiberworld.nl) (Dutch)
+  Fabio Erculiani (fabio.erculiani[at]tiscali.it) (Italian)
+  Flavio Henrique Somensi (fsomensi[at]users.sourceforge.net) (Brazilian Portuguese)
+  Jianyu Tang (jianyunet[at]gmail.com) (Chinese)
+  Marek Donar (mdonar[at]post.cz) (Czech)
+  Martin Stromberger (Fabiolla[at]aon.at) (German)
+  Mircea Aronovici (bucuresti[at]free.fr) Rumanian
+  Ryszard Jeziorski (rjeziorski[at]eagle) (Polish)
+
+Packaging:
+  Alain Pichon (alain.pichon@grisbi.org)
+  Alain Portal (dionysos@grisbi.org)
+  Benjamin Drieu (benj@debian.org)
+  François Terrot (francois.terrot@grisbi.org)
+  Gérald Niel (gerald@grisbi.org)
+  Gilles Morel (g.morel@gmail.com)
+  Matthieu Pupat (mpupat@free.fr)
+  Thierry Thomas (thierry@pompo.net)
+  Vincent Marqueton (vincent[at]marqueton.com)
+  Christian Baluchiterium (christian.baluchiterium@orange.fr)
+
+Contributors:
+  Axel Rousseau (axel584@axel584.org)
+  Dominique Parisot (parisot@villey-le-sec.com)
+
+Code borrowed from:
+  Andreas J. Guelzow
+  Marco Pesenti Gritti
+
+Thanks:
+  Alcôve (http://www.alcove.fr/), for letting Benj code on Grisbi!
+  Cédric, for being the one who started it all!
+
+If you think you should be on this list, please let us know
+(team@lists.grisbi.org).
+

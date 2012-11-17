@@ -1,0 +1,90 @@
+			     GRISBI 0.6.0
+
+Grisbi is a personal accounting application for Linux, written with
+Gtk and released under the GPL license.
+
+Our aim is to provide you with the most simple and intuitive software
+for basic use, although it can be very powerful if you spend a little
+time on the setup.
+
+Grisbi is an application written by French developers, so it
+perfectly respects French accounting rules. Grisbi can manage multiple
+accounts, currencies and users. It manages third party, expenditure
+and receipt categories, and also budgetary lines, financial years, and
+other information that make Grisbi adapted for associations (except
+those that require double entry accounting). 
+
+The complete manual is available on line. The version that comes with
+the software is not illustrated, but you can replace it by the
+illustrated version at any time, which is available for download on
+this site.  The manual will be soon completed with a Guide concerning
+accounting for associations.
+
+If you want to keep updated with Grisbi releases, you may subscribe to
+the mailing list infos@grisbi.org (see Contacts) and if you like to
+live dangerously you even can download the unstable sources from Git
+and compile them.
+
+Grisbi is free software, any contribution is welcome.
+
+This product includes software developed by the OpenSSL Project for
+use in the OpenSSL Toolkit (http://www.openssl.org/).
+
+Website :     http://www.grisbi.org
+Bug reports : http://www.grisbi.org/bugtracking
+              mailto:bugs-report@grisbi.org
+
+
+=== Release history ===
+
+  Version 0.6.0 : 05/05/2010
+  Version 0.5.9 : 10/07/2006
+  Version 0.5.8 : 19/12/2005
+  Version 0.5.7 : 02/06/2005
+  Version 0.5.6 : 14/05/2005
+  Version 0.5.5 : 07/01/2005
+  Version 0.5.4 : 27/12/2004
+  Version 0.5.3 : 19/11/2004
+  Version 0.5.2 : 18/10/2004
+  Version 0.5.1 : 29/07/2004
+  Version 0.5.0 : 22/05/2004
+  Version 0.5.0 : 22/05/2004
+  Version 0.4.5 : 07/04/2004
+  Version 0.4.4 : 25/03/2004
+  Version 0.4.3 : 02/01/2004
+  Version 0.4.2 : 25/12/2003
+  Version 0.4.1 : 04/07/2003
+  Version 0.4.0 : 15/02/2003
+  Version 0.3.2 : 15/11/2002
+  Version 0.3.1 : 21/12/2001
+  Version 0.3.0 : 10/12/2001
+  Version 0.2.0 : 19/06/2000
+  Version 0.1.0 : 10/04/2000
+
+
+
+=== License ===
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+In addition, as a special exception, you have permission to link the
+code of its release of Grisbi with the OpenSSL project's "OpenSSL"
+library (or with modified versions of it that use the same license as
+the "OpenSSL" library), and distribute the linked executables.  You
+must obey the GNU General Public License in all respects for all of
+the code used other than "OpenSSL".  If you modify this file, you may
+extend this exception to your version of the file, but you are not
+obligated to do so.  If you do not wish to do so, delete this
+exception statement from your version.

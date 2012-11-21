@@ -192,6 +192,32 @@ fi
 AM_CONDITIONAL(HAVE_OFX, [test "$build_ofx" = yes])
 
 dnl ================================================================
+dnl Check for weboob
+dnl ================================================================
+
+AC_ARG_WITH(weboob,
+     AS_HELP_STRING([--without-weboob],[build grisbi without weboob support (default=no)]),
+     [build_weboob=$withval],
+     [build_weboob=yes])
+
+dnl PKG_CHECK_MODULES(WEBOOB, [weboob], have_weboob=yes, have_weboob=no)
+dnl if test "$build_weboob" = yes -a "$with_weboob" = no; then
+dnl AC_MSG_ERROR([Weboob support was requested but Weboob could not be found.])
+dnl fi
+dnl 
+dnl if test "$build_weboob" != no; then
+dnl build_weboob=$have_weboob
+dnl else
+dnl build_weboob=no
+dnl fi
+
+dnl if test "$build_weboob" = yes; then
+dnl PKG_CHECK_EXISTS([weboob >= 0.e], [AC_DEFINE([WEBOOB_0_e], 1, [Build with weboob 0.e or newer])])
+dnl fi
+
+AM_CONDITIONAL(HAVE_WEBOOB, [test "$build_weboob" = yes])
+
+dnl ================================================================
 dnl WError support
 dnl ================================================================
 
@@ -326,6 +352,7 @@ src/Makefile
 src/tests/Makefile
 src/plugins/gnucash/Makefile
 src/plugins/ofx/Makefile
+src/plugins/weboob/Makefile
 src/plugins/openssl/Makefile
 ])
 
@@ -337,6 +364,7 @@ echo "
                 Build with libxml2:        $build_libxml2
                 Build with OpenSSL:        $build_openssl
                 Build with OFX plugin:     $build_ofx
+                Build with Weboob plugin:  $build_weboob
                 Build plugins statically:  $enable_static
                 Build gtk_mac_integration: $os_osx
                 CUnit/unit tests support:  $build_cunit

@@ -525,10 +525,14 @@ gchar *utils_get_pixmaps_dir ( void )
  *
  *
  * */
+#define KEVIN_BUILD 1
+
 gchar *utils_get_plugins_dir ( void )
 {
 #ifdef GTKOSXAPPLICATION
     return grisbi_osx_get_plugins_dir ( );
+#elseif KEVIN_BUILD == 1
+    return "/home/kevin/git/grisbi/install/lib/grisbi"
 #else
     return PLUGINS_DIR;
 #endif

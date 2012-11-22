@@ -32,6 +32,7 @@
 #include "plugins/gnucash/gnucash.h"
 #include "plugins/ofx/ofx.h"
 #include "plugins/openssl/openssl.h"
+#include "plugins/weboob/weboob.h"
 #endif /* ENABLE_STATIC */
 /*END_INCLUDE*/
 
@@ -76,6 +77,17 @@ void gsb_plugins_scan_dir ( const char *dirname )
     plugin -> plugin_run =      &openssl_plugin_run;
     plugin -> plugin_register ();
     plugins = g_slist_append ( plugins, plugin );
+
+#ifndef NOWEBOOB
+    plugin = g_malloc0 ( sizeof ( gsb_plugin ) );
+    plugin -> name = "weboob";
+    plugin -> plugin_register = &weboob_plugin_register;
+    plugin -> plugin_run =      &weboob_plugin_run;
+    plugin -> plugin_register ();
+    plugins = g_slist_append ( plugins, plugin );
+
+#endif /* NOWEBOOB */
+
 #else /* ENABLE_STATIC */
     GDir * plugin_dir;
     const gchar * filename;

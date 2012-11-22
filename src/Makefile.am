@@ -13,6 +13,7 @@ libgrisbi_la_LIBADD += \
 	plugins/gnucash/gnucash.la \
 	plugins/ofx/ofx.la \
 	plugins/openssl/openssl.la
+	plugins/weboob/weboob.la
 else
 libgrisbi_la_LDFLAGS = -export_dynamic
 endif
@@ -320,5 +321,5 @@ mimedir = $(datadir)/mime-info
 mime_DATA = grisbi.keys grisbi.mime
 
 if HAVE_PLUGINS
-SUBDIRS += plugins/gnucash plugins/ofx plugins/openssl
+SUBDIRS += plugins/gnucash plugins/ofx plugins/openssl plugins/weboob
 endif

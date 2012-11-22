@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# OFX plugin
+# WEBOOB plugin
 
 VPATH = @srcdir@
 am__make_dryrun = \
@@ -95,10 +95,9 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(plugindir)"
 LTLIBRARIES = $(noinst_LTLIBRARIES) $(plugin_LTLIBRARIES)
-am__DEPENDENCIES_1 =
-@HAVE_OFX_TRUE@weboob_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
+weboob_la_DEPENDENCIES =
 am__weboob_la_SOURCES_DIST = weboob.c weboob.h
-@HAVE_OFX_TRUE@am_weboob_la_OBJECTS = weboob.lo
+@HAVE_WEBOOB_TRUE@am_weboob_la_OBJECTS = weboob.lo
 weboob_la_OBJECTS = $(am_weboob_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -107,9 +106,9 @@ am__v_lt_1 =
 weboob_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(weboob_la_LDFLAGS) $(LDFLAGS) -o $@
-@ENABLE_STATIC_FALSE@@HAVE_OFX_TRUE@am_weboob_la_rpath = -rpath \
-@ENABLE_STATIC_FALSE@@HAVE_OFX_TRUE@	$(plugindir)
-@ENABLE_STATIC_TRUE@@HAVE_OFX_TRUE@am_weboob_la_rpath =
+@ENABLE_STATIC_FALSE@@HAVE_WEBOOB_TRUE@am_weboob_la_rpath = -rpath \
+@ENABLE_STATIC_FALSE@@HAVE_WEBOOB_TRUE@	$(plugindir)
+@ENABLE_STATIC_TRUE@@HAVE_WEBOOB_TRUE@am_weboob_la_rpath =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -323,12 +322,12 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/src $(GRISBI_CFLAGS) $(LIBOFX_CFLAGS)
-@ENABLE_STATIC_TRUE@@HAVE_OFX_TRUE@noinst_LTLIBRARIES = weboob.la
-@ENABLE_STATIC_FALSE@@HAVE_OFX_TRUE@plugin_LTLIBRARIES = weboob.la
-@HAVE_OFX_TRUE@weboob_la_SOURCES = weboob.c weboob.h
-@HAVE_OFX_TRUE@weboob_la_LDFLAGS = -module -avoid-version
-@HAVE_OFX_TRUE@weboob_la_LIBADD = $(LIBOFX_LIBS)
+AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/src $(GRISBI_CFLAGS) $(LIBWEBOOB_CFLAGS)
+@ENABLE_STATIC_TRUE@@HAVE_WEBOOB_TRUE@noinst_LTLIBRARIES = weboob.la
+@ENABLE_STATIC_FALSE@@HAVE_WEBOOB_TRUE@plugin_LTLIBRARIES = weboob.la
+@HAVE_WEBOOB_TRUE@weboob_la_SOURCES = weboob.c weboob.h
+@HAVE_WEBOOB_TRUE@weboob_la_LDFLAGS = -module -avoid-version
+@HAVE_WEBOOB_TRUE@weboob_la_LIBADD = $(LIBWEBOOB_LIBS)
 CLEANFILES = \
 	*~
 

@@ -61,7 +61,7 @@ bin_PROGRAMS = grisbi$(EXEEXT)
 @ENABLE_STATIC_TRUE@	plugins/openssl/openssl.la
 
 @HAVE_CUNIT_TRUE@am__append_2 = tests
-@HAVE_PLUGINS_TRUE@am__append_3 = plugins/gnucash plugins/ofx plugins/openssl
+@HAVE_PLUGINS_TRUE@am__append_3 = plugins/gnucash plugins/ofx plugins/openssl plugins/weboob
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(top_srcdir)/depcomp $(top_srcdir)/mkinstalldirs
@@ -227,7 +227,8 @@ AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
 	distdir
 ETAGS = etags
 CTAGS = ctags
-DIST_SUBDIRS = tests plugins/gnucash plugins/ofx plugins/openssl
+DIST_SUBDIRS = tests plugins/gnucash plugins/ofx plugins/openssl \
+	plugins/weboob
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
   dir0=`pwd`; \
@@ -309,6 +310,10 @@ INTLTOOL_EXTRACT = @INTLTOOL_EXTRACT@
 INTLTOOL_MERGE = @INTLTOOL_MERGE@
 INTLTOOL_PERL = @INTLTOOL_PERL@
 INTLTOOL_UPDATE = @INTLTOOL_UPDATE@
+INTLTOOL_V_MERGE = @INTLTOOL_V_MERGE@
+INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
+INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
+INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBM = @LIBM@
@@ -397,6 +402,8 @@ htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
+intltool__v_merge_options_ = @intltool__v_merge_options_@
+intltool__v_merge_options_0 = @intltool__v_merge_options_0@
 libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
@@ -1321,6 +1328,7 @@ uninstall-am: uninstall-binPROGRAMS uninstall-mimeDATA
 	pdf pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-mimeDATA
 
+@ENABLE_STATIC_TRUE@	plugins/weboob/weboob.la
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

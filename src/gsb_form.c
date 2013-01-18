@@ -3716,6 +3716,9 @@ typedef struct {
 } reg_str_s;
 GSList *regexp_lst = NULL;
 
+regex_t * 
+prepare_regex(char *regex_str);
+
 void 
 prepare_matching(void) {
     FILE * fp;
@@ -3726,7 +3729,7 @@ prepare_matching(void) {
     fp = fopen("/home/kevin/categories.rgxp", "r");
     if (fp == NULL) {
         perror("Could not open 'categories.rgxp'");
-        exit(EXIT_FAILURE);
+        return;
     }
     
     printf("Read the rgxp file\n\n");
@@ -3790,7 +3793,7 @@ prepare_matching(void) {
     }
     
     if (line) {
-        free(line);
+        //free(line);
     }
     fclose(fp);
 }
@@ -3817,7 +3820,7 @@ prepare_regex(char *regex_str) {
 }
 
 
-char *apply_matching(char *str) {
+char *apply_matching(const char *str) {
     GSList *current = regexp_lst ;
     int found = 0;
     reg_str_s *reg_str = NULL ;
@@ -3864,7 +3867,7 @@ match_regex(regex_t *regex, char *str) {
 
 void 
 free_str_reg(reg_str_s *str_reg, void *not_used) {
-    free(str_reg->str);
+    //free(str_reg->str);
     /* Free compiled regular expression if you want to use the regex_t again */
     regfree(str_reg->reg);
 }
@@ -3919,6 +3922,7 @@ gboolean gsb_form_initialise_transaction_form ( void )
     gint form_account_number;
     gint account_number;
 
+    prepare_matching();
     devel_debug (NULL);
 
     /* get the form of the first account */

@@ -58,5 +58,6 @@ gboolean gsb_form_set_sensitive ( gboolean split,
                         gboolean split_child);
 gboolean gsb_form_show ( gboolean show );
 gboolean gsb_form_switch_expander ( void );
+gboolean gsb_form_guess_clicked (GtkWidget *entry, gpointer null);
 /* END_DECLARATION */
 #endif

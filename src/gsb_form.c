@@ -3683,6 +3683,197 @@ GtkWidget *gsb_form_get_element_widget_from_list ( gint element_number,
     return NULL;
 }
 
+/*******************************/
+#include <regex.h>
+typedef struct {
+    regex_t *reg;
+    char *str;
+} reg_str_s;
+GSList *regexp_lst = NULL;
+
+regex_t * 
+prepare_regex(char *regex_str);
+
+#define SEP "/"
+
+void 
+prepare_matching(void) {
+    FILE * fp;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    
+    fp = fopen("/home/kevin/categories.rgxp", "r");
+    if (fp == NULL) {
+        perror("Could not open 'categories.rgxp'");
+        return;
+    }
+    
+    printf("Read the rgxp file\n\n");
+    while ((read = getline(&line, &len, fp)) != -1) {
+        char *my_line = line;
+        int sep_idx;
+        char type;
+        reg_str_s *reg_str;
+        
+        type = my_line[0];
+        
+        if (type == '#' || type == ' ' || type == '\n') {
+            continue;
+        }
+        
+        reg_str = (reg_str_s *) g_malloc0 (sizeof(reg_str_s));
+        
+        if (reg_str == NULL) {
+            dialogue_error_memory ();
+            break;
+        }
+        
+        my_line[read-1] = '\0'; //remove last \n
+        printf("Prepare '%s'\n", my_line);        
+        
+        sep_idx = strcspn(my_line, SEP);
+        my_line[sep_idx] = '\0'; //hide second part
+        
+        printf("--> regex:  '%s'\n", my_line);
+        reg_str->reg = prepare_regex(my_line);
+        
+        if (reg_str->reg == NULL) {
+            perror("Couldn't prepare regex ...");
+            continue;
+        }
+        
+        my_line += sep_idx + 1; //jump to second part 
+        
+        reg_str->str = strdup(my_line);
+        printf("--> string: '%s'\n", reg_str->str);
+        regexp_lst = g_slist_prepend (regexp_lst, reg_str);
+        printf("\n");
+    }
+    
+    if (line) {
+        g_free(line);
+    }
+    fclose(fp);
+}
+
+regex_t * 
+prepare_regex(char *regex_str) {
+    regex_t *regex;
+    int reti;
+    
+    regex = (regex_t *) g_malloc0 (sizeof(regex_t));
+    if (regex == NULL) {
+        dialogue_error_memory ();
+        return NULL;
+    }
+    
+    /* Compile regular expression */
+    reti = regcomp(regex, regex_str, 0);
+    if (reti) { 
+        fprintf(stderr, "Could not compile regex\n"); 
+        return NULL;
+    }
+    
+    return regex;
+}
+
+
+char *apply_matching(const char *payee) {
+    GSList *current = regexp_lst ;
+    int found = 0;
+    reg_str_s *reg_str = NULL ;
+    
+    while (!found && current != NULL) {
+        reg_str = (reg_str_s *) g_slist_nth_data(current, 0);
+        int match = match_regex(reg_str->reg, payee);
+        // printf("'%s' is '%s' ?\n", str, reg_str->str);
+        if (match) {
+            found = 1;
+            break;
+        } else if (match == -1) {
+            printf("FAILED :-(\n");
+        }
+        
+        current = g_slist_next(current);
+    }
+    
+    if (found) {
+        return reg_str->str;
+    } else {
+        return NULL;
+    }
+}
+
+int
+match_regex(regex_t *regex, char *str) {
+    int reti;
+    char msgbuf[100];
+    
+    /* Execute regular expression */
+    reti = regexec(regex, str, 0, NULL, 0);
+    if (!reti) {
+        // puts("Match");
+    } else if( reti == REG_NOMATCH ) {
+        // puts("No match");
+    } else {
+        regerror(reti, regex, msgbuf, sizeof(msgbuf));
+        fprintf(stderr, "Regex match failed: %s\n", msgbuf);
+        return -1;
+    }
+    
+    return !reti;
+}
+
+void 
+free_str_reg(reg_str_s *str_reg, void *not_used) {
+    g_free (str_reg->str);
+    /* Free compiled regular expression if you want to use the regex_t again */
+    regfree (str_reg->reg);
+}
+
+void 
+free_matching(void) {
+    g_slist_foreach (regexp_lst, (GFunc) free_str_reg, NULL);
+}
+
+/**
+ * called when ...
+ *
+ * \param entry
+ * \param null
+ *
+ * \return FALSE
+ * */
+gboolean gsb_form_guess_clicked ( GtkWidget *entry,
+                                  gpointer null ) {
+    const gchar *payee, *notes, *catee;
+    
+    GtkWidget *widget_categories = gsb_form_widget_get_widget (TRANSACTION_FORM_CATEGORY);
+    GtkWidget *widget_payee = gsb_form_widget_get_widget (TRANSACTION_FORM_PARTY);
+    GtkWidget *widget_notes = gsb_form_widget_get_widget (TRANSACTION_FORM_NOTES);
+    
+    if (widget_categories == NULL || widget_payee == NULL) {
+        printf ("Information missing :(\n");
+        return FALSE;
+    }
+    
+    payee = gtk_combofix_get_text (GTK_COMBOFIX (widget_payee));   
+    notes = gtk_entry_get_text ( GTK_ENTRY ( widget_notes ) );
+    
+    catee = apply_matching (payee);
+    
+    if (!catee) {
+        catee = apply_matching (notes);
+    }
+    
+    if (catee) {
+        gtk_combofix_set_text(GTK_COMBOFIX (widget_categories) , catee);
+        gsb_form_widget_set_empty (GTK_COMBOFIX (widget_categories)->entry, FALSE);
+    }
+    
+    return TRUE;
+}
 
 /**
  * initialise le formulaire
@@ -3698,6 +3889,7 @@ gboolean gsb_form_initialise_transaction_form ( void )
     gint form_account_number;
     gint account_number;
 
+    prepare_matching();
     devel_debug (NULL);
 
     /* get the form of the first account */

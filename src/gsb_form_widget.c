@@ -301,6 +301,12 @@ GtkWidget *gsb_form_widget_create ( gint element_number,
 	case TRANSACTION_FORM_MODE:
 	    widget = gtk_label_new ( NULL );
 	    break;
+    case TRANSACTION_FORM_GUESS:
+        widget = gtk_button_new_with_label(_("Guess it"));
+        g_signal_connect ( G_OBJECT (  widget ),
+                           "clicked",
+                           G_CALLBACK (gsb_form_guess_clicked),
+                           NULL );
     }
 
     if ( widget )
